@@ -2,6 +2,12 @@ import random
 
 
 class RandomNumber:
+
+    # The generator function takes 3 positional arguments.
+    # amount = how many numbers to be generated
+    # minRange = starting range of number to be generated
+    # maxRange = ending range of numbers to be generated
+
     def generator(self, amount, minRange, maxRange):
 
         # Pre-conditions:
