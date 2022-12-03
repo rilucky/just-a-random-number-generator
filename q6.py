@@ -42,5 +42,4 @@ class RandomNumber:
 
 
 rand = RandomNumber()
-
 rand.generator(5, 1, 10)
