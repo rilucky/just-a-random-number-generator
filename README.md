@@ -4,6 +4,7 @@ Instatiate the RandomNumber class and run the generator function to generate ran
 
 The generator function takes 3 argumets: amount, minRange, maxRange.
 
-Amount = # of numbers to be created
-minRange = numbers generated from
-maxRange = numbers generated to
+
+Amount = of numbers to be generated
+minRange = starting position
+maxRange = end position
