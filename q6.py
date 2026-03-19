@@ -11,34 +11,26 @@ class RandomNumber:
     def generator(self, amount, minRange, maxRange):
 
         # Pre-conditions:
-        # Check type of inputs
-        if type(amount) != int or type(minRange) != int or type(maxRange) != int:
-            raise Exception("Program only accepts integers")
+        # Check type of inputs using a single isinstance check instead
+        # of three separate type() comparisons
+        if not all(isinstance(x, int) for x in (amount, minRange, maxRange)):
+            raise TypeError("Program only accepts integers")
 
         # Checks that amount is greater than 1
         if amount < 1:
-            raise Exception("Amount must be greater than 0")
+            raise ValueError("Amount must be greater than 0")
 
-        # Check that starting range is less that end range
+        # Check that starting range is less than end range
         if minRange >= maxRange:
-            raise Exception("Starting point must be less than end point")
+            raise ValueError("Starting point must be less than end point")
 
-        result = []
-        for i in range(amount):
-            number = random.randint(minRange, maxRange)
-            result.append(number)
+        # Use a list comprehension instead of a loop with append.
+        # List comprehensions are faster because they avoid repeated
+        # attribute lookups for the append method and are optimized
+        # at the bytecode level.
+        result = [random.randint(minRange, maxRange) for _ in range(amount)]
 
-        # Post-conditions
-        # Check that there is some numbers has been generated
-        if len(result) == 0:
-            raise Exception("No numbers has been generated")
-
-        # Check if amount passed and amount of numbers in result are the same
-        if len(result) == amount:
-            return result
-        # Raise exception if not
-        else:
-            raise Exception("No numbers has been generated")
+        return result
 
 
 rand = RandomNumber()
